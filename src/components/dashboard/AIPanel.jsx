@@ -14,7 +14,7 @@ const AIPanel = ({ data }) => {
     };
 
     return (
-        <Card glow className="bg-slate-900 border-ai-primary/20">
+        <Card glow className="bg-white dark:bg-slate-900 border-ai-primary/20">
             <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 bg-ai-secondary rounded-xl flex items-center justify-center shadow-lg shadow-ai-secondary/20">
                     <BrainCircuit className="text-white" size={20} />
@@ -25,11 +25,11 @@ const AIPanel = ({ data }) => {
                 </div>
             </div>
 
-            <div className="relative p-4 rounded-2xl bg-slate-800/80 border border-slate-700 shadow-sm mb-6">
+            <div className="relative p-4 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700 shadow-sm mb-6">
                 <div className="absolute -top-3 left-6">
                     <MessageSquareQuote size={24} className="text-ai-secondary opacity-50 fill-ai-secondary" />
                 </div>
-                <p className="text-sm leading-relaxed text-slate-300 pt-2 italic">
+                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300 pt-2 italic">
                     "{summary.quote}"
                 </p>
             </div>
@@ -59,25 +59,25 @@ const AIPanel = ({ data }) => {
                 title="AI Cognitive Analysis"
             >
                 <div className="space-y-6">
-                    <div className="flex items-start gap-4 p-5 rounded-2xl bg-slate-800 border border-slate-700">
+                    <div className="flex items-start gap-4 p-5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700">
                         <div className="p-3 rounded-2xl bg-violet-900/30 text-violet-400">
                             <Sparkles size={24} />
                         </div>
                         <div>
                             <h4 className="font-bold mb-1">Sentiment Correlation</h4>
-                            <p className="text-xs text-slate-400 leading-relaxed">
+                            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                                 Natural Language processing of over 40k earnings calls suggests a decoupled growth phase for Tech vs Traditional Retail.
                             </p>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="p-4 rounded-2xl border border-slate-800">
-                            <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">Risk Parity</div>
+                        <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                            <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 mb-1">Risk Parity</div>
                             <div className="text-lg font-bold text-ai-primary">Optimized</div>
                         </div>
-                        <div className="p-4 rounded-2xl border border-slate-800">
-                            <div className="text-[10px] uppercase font-bold text-slate-400 mb-1">Compute Load</div>
+                        <div className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800">
+                            <div className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 mb-1">Compute Load</div>
                             <div className="text-lg font-bold text-ai-secondary">Minimal</div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@ const AIPanel = ({ data }) => {
 
                     <button
                         onClick={() => setShowDetails(false)}
-                        className="w-full py-3 border border-slate-700 rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors"
+                        className="w-full py-3 border border-slate-300 dark:border-slate-700 rounded-xl font-bold text-sm hover:bg-slate-100 dark:bg-slate-800 transition-colors"
                     >
                         Close Analysis
                     </button>

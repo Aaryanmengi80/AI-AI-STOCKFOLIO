@@ -136,7 +136,7 @@ const AICopilot = () => {
                                             <Send size={16} />
                                         </button>
                                     </div>
-                                    <div className="mt-2 text-[8px] text-center text-slate-400 font-bold uppercase tracking-widest">
+                                    <div className="mt-2 text-[8px] text-center text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest">
                                         LLM Engine: Gemini 1.5 Flash • Strategic Context Active
                                     </div>
                                 </form>

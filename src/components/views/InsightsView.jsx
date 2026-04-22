@@ -112,10 +112,10 @@ const InsightsView = () => {
                             </p>
                             <div className="flex items-center justify-between pt-6 border-t border-slate-100 dark:border-slate-800">
                                 <div className="flex items-center gap-2">
-                                    <div className={`w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center`}>
+                                    <div className={`w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center`}>
                                         <MessageSquareCode size={16} className={`text-ai-${insight.color || 'primary'}`} />
                                     </div>
-                                    <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{insight.badge}</span>
+                                    <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{insight.badge}</span>
                                 </div>
                                 <button
                                     onClick={() => openAnalysis(insight.title)}
@@ -130,9 +130,9 @@ const InsightsView = () => {
             </div>
 
             <ScrollReveal delay={0.3}>
-                <Card className="bg-slate-800/50 p-12 text-center">
+                <Card className="bg-slate-100 dark:bg-slate-800/50 p-12 text-center">
                     <div className="flex flex-col items-center gap-4 max-w-2xl mx-auto">
-                        <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center shadow-xl mb-2">
+                        <div className="w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl flex items-center justify-center shadow-xl mb-2">
                             <Zap className="text-ai-primary animate-pulse" size={32} />
                         </div>
                         <h2 className="text-2xl font-bold">Predictive Sentiment Feed</h2>
@@ -169,7 +169,7 @@ const InsightsView = () => {
                     <div className="flex gap-4 pt-4">
                         <button 
                             onClick={handleDownload}
-                            className="flex-grow py-3 bg-slate-800 hover:bg-slate-700 transition-colors rounded-xl font-bold flex items-center justify-center gap-2"
+                            className="flex-grow py-3 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-700 transition-colors rounded-xl font-bold flex items-center justify-center gap-2"
                         >
                             <Download size={18} /> Download Full Analysis
                         </button>

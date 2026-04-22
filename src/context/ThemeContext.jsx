@@ -3,16 +3,37 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-    // Force dark mode perpetually
-    const isDarkMode = true;
+    const [isDarkMode, setIsDarkMode] = useState(true);
 
     useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        const themeToApply = savedTheme ? savedTheme === 'dark' : true;
+
+        setIsDarkMode(themeToApply);
+
         const root = window.document.documentElement;
-        root.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
+        if (themeToApply) {
+            root.classList.add('dark');
+        } else {
+            root.classList.remove('dark');
+        }
     }, []);
 
-    const toggleTheme = () => console.log("Theme is locked to Industrial Dark.");
+    const toggleTheme = () => {
+        setIsDarkMode(prev => {
+            const newMode = !prev;
+            localStorage.setItem('theme', newMode ? 'dark' : 'light');
+
+            const root = window.document.documentElement;
+            if (newMode) {
+                root.classList.add('dark');
+            } else {
+                root.classList.remove('dark');
+            }
+
+            return newMode;
+        });
+    };
 
     return (
         <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>

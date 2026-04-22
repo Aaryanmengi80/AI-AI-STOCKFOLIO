@@ -95,7 +95,7 @@ const RiskView = () => {
                     <Card glow className="relative overflow-hidden">
                         <div className="flex items-center justify-between mb-8">
                             <h3 className="text-lg font-bold">Predictive Stress Simulation</h3>
-                            <div className="text-xs font-bold text-slate-400">Live Backend Calculation</div>
+                            <div className="text-xs font-bold text-slate-500 dark:text-slate-400">Live Backend Calculation</div>
                         </div>
 
                         <div className="space-y-6">
@@ -114,7 +114,7 @@ const RiskView = () => {
                                         </div>
                                         <div>
                                             <div className="font-bold text-sm tracking-tight group-hover:text-ai-secondary transition-colors">{test.scenario}</div>
-                                            <div className="text-[10px] text-slate-400 uppercase font-black tracking-widest">{test.resilience} Resilience</div>
+                                            <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-black tracking-widest">{test.resilience} Resilience</div>
                                         </div>
                                     </div>
                                     <div className="text-right">
@@ -134,11 +134,11 @@ const RiskView = () => {
                         <div className="absolute top-0 right-0 p-4 opacity-10">
                             <Activity size={100} />
                         </div>
-                        <h3 className="text-sm uppercase font-bold text-slate-400 mb-6">Real-time Volatility (Annual)</h3>
+                        <h3 className="text-sm uppercase font-bold text-slate-500 dark:text-slate-400 mb-6">Real-time Volatility (Annual)</h3>
                         <div className="text-5xl font-black mb-2 tracking-tighter">
                             {(data?.risk_metrics?.volatility * 100 || 12.4).toFixed(1)}%
                         </div>
-                        <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
                             Portfolio risk score: <span className="text-ai-primary font-bold">{data?.risk_score || "Determining..."}</span>
                         </p>
                         <div className="pt-6 border-t border-white/10 flex justify-between items-center text-[10px] font-bold uppercase tracking-widest text-ai-primary">
@@ -168,7 +168,7 @@ const RiskView = () => {
                         </div>
                         <button
                             onClick={() => setConstraintModal(true)}
-                            className="w-full mt-6 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                            className="w-full mt-6 py-2 border border-slate-200 dark:border-slate-800 rounded-lg text-xs font-bold hover:bg-slate-50 dark:hover:bg-slate-100 dark:bg-slate-800 transition-colors"
                         >
                             Adjust Constraints
                         </button>
@@ -177,7 +177,7 @@ const RiskView = () => {
             </div>
 
             <Modal isOpen={showLogs} onClose={() => setShowLogs(false)} title="Secure Encryption Logs">
-                <div className="space-y-4 font-mono text-[10px] p-4 bg-slate-950 text-emerald-500 rounded-xl max-h-[300px] overflow-y-auto shadow-inner border border-slate-800">
+                <div className="space-y-4 font-mono text-[10px] p-4 bg-slate-50 dark:bg-slate-950 text-emerald-500 rounded-xl max-h-[300px] overflow-y-auto shadow-inner border border-slate-200 dark:border-slate-800">
                     <div>[INFO] Establishing secure quantum tunnel...</div>
                     <div className="text-slate-500">[DEBUG] Handshake verified @ node 4429</div>
                     <div>[STATUS] 256-bit AES Layer active</div>
@@ -189,7 +189,7 @@ const RiskView = () => {
                 <div className="space-y-4 py-2">
                     <p className="text-xs text-rose-500 font-bold mb-4 flex items-center gap-2"><Lock size={14} /> SECURITY CLEARANCE REQUIRED</p>
                     {['Liquidity Lock', 'Max Sector Drawdown', 'Derivative Hedging'].map(setting => (
-                        <div key={setting} className="flex justify-between items-center p-3 bg-slate-800 rounded-xl border border-slate-700">
+                        <div key={setting} className="flex justify-between items-center p-3 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700">
                             <span className="text-sm font-medium">{setting}</span>
                             <div className="w-10 h-5 bg-ai-secondary rounded-full relative cursor-pointer opacity-50">
                                 <div className="absolute right-1 top-0.5 w-4 h-4 bg-white rounded-full"></div>

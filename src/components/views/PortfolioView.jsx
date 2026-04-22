@@ -38,11 +38,11 @@ const PortfolioView = () => {
                     <div className="grid grid-cols-2 gap-3">
                         <button className="p-4 rounded-xl border-2 border-ai-primary/20 hover:border-ai-primary transition-all text-left">
                             <div className="font-bold">Lump Sum</div>
-                            <div className="text-[10px] text-slate-400">Immediate Deployment</div>
+                            <div className="text-[10px] text-slate-500 dark:text-slate-400">Immediate Deployment</div>
                         </button>
-                        <button className="p-4 rounded-xl border-2 border-slate-800 hover:border-ai-primary transition-all text-left">
+                        <button className="p-4 rounded-xl border-2 border-slate-200 dark:border-slate-800 hover:border-ai-primary transition-all text-left">
                             <div className="font-bold">AI DCA</div>
-                            <div className="text-[10px] text-slate-400">Algorithmic Averaging</div>
+                            <div className="text-[10px] text-slate-500 dark:text-slate-400">Algorithmic Averaging</div>
                         </button>
                     </div>
                     <button
@@ -62,16 +62,16 @@ const PortfolioView = () => {
             title: 'Technical Layer Analysis',
             content: (
                 <div className="space-y-6">
-                    <div className="p-4 rounded-2xl bg-slate-800 border border-slate-700">
+                    <div className="p-4 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700">
                         <div className="flex items-center gap-3 mb-4">
                             <Database className="text-ai-primary" />
                             <h4 className="font-bold">Infrastructure Layer</h4>
                         </div>
                         <div className="space-y-2">
-                            <div className="h-2 w-full bg-slate-700 rounded-full overflow-hidden">
+                            <div className="h-2 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                                 <div className="h-full bg-ai-primary w-[85%]" />
                             </div>
-                            <div className="flex justify-between text-[10px] font-bold text-slate-400 uppercase">
+                            <div className="flex justify-between text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">
                                 <span>Compute Weight</span>
                                 <span>85%</span>
                             </div>
@@ -127,7 +127,7 @@ const PortfolioView = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <Card glow className="lg:col-span-1">
-                    <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Total Assets</h3>
+                    <h3 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">Total Assets</h3>
                     <div className="text-3xl font-bold">${data?.total_value?.toLocaleString()}</div>
                     <div className="flex items-center gap-2 mt-2 text-emerald-500 font-bold">
                         <TrendingUp size={16} />
@@ -135,9 +135,9 @@ const PortfolioView = () => {
                     </div>
                 </Card>
                 <div className="lg:col-span-3">
-                    <Card className="overflow-hidden p-0 border-slate-800">
+                    <Card className="overflow-hidden p-0 border-slate-200 dark:border-slate-800">
                         <table className="w-full text-left">
-                            <thead className="bg-slate-900/50">
+                            <thead className="bg-white dark:bg-slate-900/50">
                                 <tr className="border-b border-slate-100 dark:border-slate-800">
                                     <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Asset</th>
                                     <th className="px-6 py-4 text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest text-center">Quantity</th>
@@ -153,7 +153,7 @@ const PortfolioView = () => {
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: idx * 0.1 }}
-                                        className="border-b border-slate-800 last:border-0 hover:bg-slate-800/30 transition-colors group"
+                                        className="border-b border-slate-200 dark:border-slate-800 last:border-0 hover:bg-slate-100 dark:bg-slate-800/30 transition-colors group"
                                     >
                                         <td className="px-6 py-4">
                                             <div className="font-bold flex items-center gap-2 group-hover:text-ai-primary transition-colors">
@@ -161,12 +161,12 @@ const PortfolioView = () => {
                                                 <Badge variant={asset.type === 'Crypto' ? 'ai' : 'outline'} className="text-[8px] px-1 py-0">{asset.type}</Badge>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 text-center font-mono text-slate-400">{asset.qty}</td>
-                                        <td className="px-6 py-4 text-right font-mono text-slate-400">${asset.price?.toLocaleString()}</td>
+                                        <td className="px-6 py-4 text-center font-mono text-slate-500 dark:text-slate-400">{asset.qty}</td>
+                                        <td className="px-6 py-4 text-right font-mono text-slate-500 dark:text-slate-400">${asset.price?.toLocaleString()}</td>
                                         <td className="px-6 py-4 text-right font-mono font-bold text-ai-secondary">${asset.value?.toLocaleString()}</td>
                                         <td className="px-6 py-4 text-right">
                                             <div className="flex items-center justify-end gap-2">
-                                                <span className="text-xs font-bold text-slate-400">
+                                                <span className="text-xs font-bold text-slate-500 dark:text-slate-400">
                                                     {((asset.value / data.total_value) * 100).toFixed(1)}%
                                                 </span>
                                             </div>
@@ -186,7 +186,7 @@ const PortfolioView = () => {
                             <h3 className="font-bold">Diversification Score</h3>
                             <Badge variant="ai">AI Optimized</Badge>
                         </div>
-                        <div className="flex items-center justify-center p-8 bg-slate-800 shadow-inner rounded-3xl h-48">
+                        <div className="flex items-center justify-center p-8 bg-slate-100 dark:bg-slate-800 shadow-inner rounded-3xl h-48">
                             <div className="text-center">
                                 <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-ai-primary to-ai-secondary">92</div>
                                 <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mt-2">Elite Tier</div>
@@ -207,10 +207,10 @@ const PortfolioView = () => {
                                 { label: 'Fixed Income', value: '+4.2%', desc: 'Yield curve stabilization' },
                                 { label: 'Crypto Alpha', value: '+24.5%', desc: 'High beta correlation play' },
                             ].map(item => (
-                                <div key={item.label} className="p-3 rounded-xl border border-slate-800 flex justify-between items-center group cursor-pointer hover:border-ai-primary transition-all">
+                                <div key={item.label} className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 flex justify-between items-center group cursor-pointer hover:border-ai-primary transition-all">
                                     <div>
                                         <div className="font-bold text-sm group-hover:text-ai-primary transition-colors">{item.label}</div>
-                                        <div className="text-[10px] text-slate-400">{item.desc}</div>
+                                        <div className="text-[10px] text-slate-500 dark:text-slate-400">{item.desc}</div>
                                     </div>
                                     <div className="text-emerald-500 font-black tracking-tight">{item.value}</div>
                                 </div>

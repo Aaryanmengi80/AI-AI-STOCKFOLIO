@@ -2,6 +2,7 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Card } from '../ui/Base';
 import { ArrowUp, ArrowDown } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 const data = [
     { name: 'Tech', value: 12.5, status: 'bullish' },
@@ -13,6 +14,7 @@ const data = [
 ];
 
 const SectorPerformance = () => {
+    const { isDarkMode } = useTheme();
     return (
         <Card className="h-full">
             <div className="flex justify-between items-center mb-6">
@@ -33,28 +35,28 @@ const SectorPerformance = () => {
             <div className="h-[250px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={data}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f080" />
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={isDarkMode ? "#e2e8f010" : "#e2e8f0"} />
                         <XAxis
                             dataKey="name"
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fontSize: 10, fill: '#94a3b8', fontWeight: 600 }}
+                            tick={{ fontSize: 10, fill: isDarkMode ? '#94a3b8' : '#64748b', fontWeight: 600 }}
                         />
                         <YAxis
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fontSize: 10, fill: '#94a3b8' }}
+                            tick={{ fontSize: 10, fill: isDarkMode ? '#94a3b8' : '#64748b' }}
                             tickFormatter={(value) => `${value}%`}
                         />
                         <Tooltip
-                            cursor={{ fill: 'rgba(59, 130, 246, 0.05)' }}
+                            cursor={{ fill: isDarkMode ? 'rgba(59, 130, 246, 0.05)' : 'rgba(59, 130, 246, 0.1)' }}
                             contentStyle={{
-                                backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                                backgroundColor: isDarkMode ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 0.95)',
                                 borderRadius: '12px',
-                                border: '1px solid rgba(51, 65, 85, 0.5)',
-                                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)'
+                                border: isDarkMode ? '1px solid rgba(51, 65, 85, 0.5)' : '1px solid rgba(203, 213, 225, 0.8)',
+                                boxShadow: isDarkMode ? '0 10px 15px -3px rgba(0, 0, 0, 0.5)' : '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
                             }}
-                            itemStyle={{ fontSize: '12px', fontWeight: 'bold', color: '#f8fafc' }}
+                            itemStyle={{ fontSize: '12px', fontWeight: 'bold', color: isDarkMode ? '#f8fafc' : '#1e293b' }}
                         />
                         <Bar dataKey="value" radius={[6, 6, 0, 0]} barSize={35}>
                             {data.map((entry, index) => (
@@ -71,7 +73,7 @@ const SectorPerformance = () => {
 
             <div className="mt-6 space-y-3">
                 {data.slice(0, 3).map((item) => (
-                    <div key={item.name} className="flex items-center justify-between p-2 rounded-xl bg-slate-800/50 border border-slate-800">
+                    <div key={item.name} className="flex items-center justify-between p-2 rounded-xl bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800">
                         <div className="flex items-center gap-3">
                             <div className={`w-2 h-2 rounded-full ${item.value > 0 ? 'bg-emerald-500' : 'bg-rose-500'}`} />
                             <span className="text-sm font-semibold">{item.name}</span>

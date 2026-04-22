@@ -19,7 +19,7 @@ const RiskCalculator = () => {
     }, [amount, tolerance, years]);
 
     return (
-        <Card className="p-8 h-full bg-slate-900 border border-slate-800 rounded-[2.5rem] shadow-xl overflow-hidden relative group">
+        <Card className="p-8 h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2.5rem] shadow-xl overflow-hidden relative group">
             <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
                 <Calculator size={120} />
             </div>
@@ -45,7 +45,7 @@ const RiskCalculator = () => {
                         <input
                             type="range" min="1000" max="1000000" step="1000"
                             value={amount} onChange={(e) => setAmount(Number(e.target.value))}
-                            className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-ai-primary"
+                            className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-ai-primary"
                         />
                     </div>
 
@@ -57,7 +57,7 @@ const RiskCalculator = () => {
                         <input
                             type="range" min="1" max="100"
                             value={tolerance} onChange={(e) => setTolerance(Number(e.target.value))}
-                            className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-ai-primary"
+                            className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-ai-primary"
                         />
                     </div>
 
@@ -73,7 +73,7 @@ const RiskCalculator = () => {
                                     onClick={() => setYears(y)}
                                     className={`flex-1 py-3 rounded-xl text-xs font-black transition-all ${years === y
                                         ? 'bg-ai-primary text-white shadow-lg shadow-ai-primary/20'
-                                        : 'bg-slate-800 hover:bg-slate-700'
+                                        : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:bg-slate-700'
                                         }`}
                                 >
                                     {y}Y
@@ -84,7 +84,7 @@ const RiskCalculator = () => {
                 </div>
 
                 {/* Analysis Section */}
-                <div className="bg-slate-800/50 p-8 rounded-[2rem] border border-slate-800 border-dashed relative">
+                <div className="bg-slate-100 dark:bg-slate-800/50 p-8 rounded-[2rem] border border-slate-200 dark:border-slate-800 border-dashed relative">
                     <div className="absolute top-4 right-4">
                         <Badge variant={tolerance > 70 ? 'danger' : tolerance > 30 ? 'warning' : 'success'}>
                             {stats.riskLevel} Tier
@@ -94,7 +94,7 @@ const RiskCalculator = () => {
                     <div className="space-y-6">
                         <div className="flex items-center justify-between">
                             <div>
-                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Sigma (Volatility)</p>
+                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-1">Sigma (Volatility)</p>
                                 <p className="text-3xl font-black">{stats.volatility}%</p>
                             </div>
                             <BarChart2 className="text-ai-primary/30" size={40} />
@@ -102,14 +102,14 @@ const RiskCalculator = () => {
 
                         <div className="flex items-center justify-between">
                             <div>
-                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">Max Drawdown (Stress)</p>
+                                <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-1">Max Drawdown (Stress)</p>
                                 <p className="text-3xl font-black text-rose-500">-{stats.maxDrawdown}%</p>
                             </div>
                             <AlertTriangle className="text-rose-500/30" size={40} />
                         </div>
 
                         <div className="pt-6 border-t border-slate-200 dark:border-slate-700">
-                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Projected Maturity</p>
+                            <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">Projected Maturity</p>
                             <div className="flex items-end gap-2">
                                 <p className="text-4xl font-black text-ai-primary">${Number(stats.projectedReturn).toLocaleString()}</p>
                                 <div className="flex items-center text-emerald-500 text-xs font-black mb-2 gap-1">

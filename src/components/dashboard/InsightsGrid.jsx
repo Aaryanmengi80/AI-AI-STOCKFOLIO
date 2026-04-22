@@ -41,7 +41,7 @@ const InsightsGrid = ({ onNavigate }) => {
             <div className="flex items-center justify-between">
                 <h3 className="text-xl font-bold flex items-center gap-2">
                     AI Flash Insights
-                    <Info size={16} className="text-slate-400" />
+                    <Info size={16} className="text-slate-500 dark:text-slate-400" />
                 </h3>
                 <button
                     onClick={onNavigate}

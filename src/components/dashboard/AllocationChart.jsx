@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { Card, Badge } from '../ui/Base';
 import { Loader2 } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 const AllocationChart = ({ data = [] }) => {
+    const { isDarkMode } = useTheme();
     const [activeIndex, setActiveIndex] = useState(null);
 
     const onPieEnter = (_, index) => {
@@ -56,12 +58,12 @@ const AllocationChart = ({ data = [] }) => {
                                 </Pie>
                                 <Tooltip
                                     contentStyle={{
-                                        backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                                        backgroundColor: isDarkMode ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.95)',
                                         borderRadius: '16px',
-                                        border: '1px solid rgba(51, 65, 85, 0.5)',
-                                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)'
+                                        border: isDarkMode ? '1px solid rgba(51, 65, 85, 0.5)' : '1px solid rgba(203, 213, 225, 0.8)',
+                                        boxShadow: isDarkMode ? '0 20px 25px -5px rgba(0, 0, 0, 0.5)' : '0 20px 25px -5px rgba(0, 0, 0, 0.1)'
                                     }}
-                                    itemStyle={{ color: '#f8fafc' }}
+                                    itemStyle={{ color: isDarkMode ? '#f8fafc' : '#1e293b' }}
                                 />
                             </PieChart>
                         </ResponsiveContainer>
@@ -78,7 +80,7 @@ const AllocationChart = ({ data = [] }) => {
                     {data.map((item, index) => (
                         <div
                             key={item.name}
-                            className={`transition-all duration-300 p-2 rounded-xl border ${activeIndex === index ? 'bg-slate-800 border-ai-primary/30 shadow-sm' : 'border-transparent'
+                            className={`transition-all duration-300 p-2 rounded-xl border ${activeIndex === index ? 'bg-slate-100 dark:bg-slate-800 border-ai-primary/30 shadow-sm' : 'border-transparent'
                                 }`}
                         >
                             <div className="flex items-center gap-3">
@@ -91,7 +93,7 @@ const AllocationChart = ({ data = [] }) => {
                                     {activeIndex === index && item.subAssets && (
                                         <div className="flex gap-2 mt-2">
                                             {item.subAssets.map(sub => (
-                                                <span key={sub} className="text-[10px] bg-slate-700 px-2 py-0.5 rounded font-mono">
+                                                <span key={sub} className="text-[10px] bg-slate-200 dark:bg-slate-700 px-2 py-0.5 rounded font-mono">
                                                     {sub}
                                                 </span>
                                             ))}

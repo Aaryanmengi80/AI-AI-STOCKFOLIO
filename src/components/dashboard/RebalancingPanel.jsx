@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpCircle, ArrowDownCircle, Sparkles, ChevronRight, Loader2, Zap, ShieldCheck } from 'lucide-react';
 
 const RebalanceCard = ({ asset, action, current, target, reason }) => (
-    <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-sm hover:shadow-md transition-all group overflow-hidden">
+    <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all group overflow-hidden">
         <div className="flex justify-between items-start mb-6">
             <div>
                 <h4 className="font-black text-lg tracking-tight mb-1">{asset}</h4>
@@ -35,8 +35,8 @@ const RebalanceCard = ({ asset, action, current, target, reason }) => (
             </div>
         </div>
 
-        <div className="bg-slate-800/50 p-4 rounded-2xl">
-            <p className="text-xs text-slate-400 leading-relaxed italic">
+        <div className="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-2xl">
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
                 "{reason}"
             </p>
         </div>
@@ -137,7 +137,7 @@ const RebalancingPanel = () => {
                             <ShieldCheck size={32} />
                         </div>
                         <h4 className="text-lg font-bold text-emerald-400 mb-2">Strategy Optimized</h4>
-                        <p className="text-sm text-slate-400">
+                        <p className="text-sm text-slate-500 dark:text-slate-400">
                             Executing these moves will re-align your portfolio with its target risk architecture.
                         </p>
                     </div>

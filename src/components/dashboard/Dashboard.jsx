@@ -244,7 +244,7 @@ const Dashboard = ({ setActiveTab }) => {
                         className="text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2"
                     >
                         Status: <span className="text-emerald-500 font-bold">Excellent</span>
-                        <span className="w-1 h-1 bg-slate-800 rounded-full" />
+                        <span className="w-1 h-1 bg-slate-100 dark:bg-slate-800 rounded-full" />
                         <span className="text-[10px] uppercase font-black tracking-widest text-slate-500">
                             Last Synced: {lastUpdated || "--:--:--"}
                         </span>
@@ -320,7 +320,7 @@ const Dashboard = ({ setActiveTab }) => {
                         </h4>
                         <div className="space-y-4">
                             {[1, 2, 3].map(i => (
-                                <div key={i} className="flex items-center justify-between p-3 bg-slate-900 rounded-xl border border-slate-800">
+                                <div key={i} className="flex items-center justify-between p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800">
                                     <span className="text-xs font-medium">Node 0x{i}F-Secure</span>
                                     <Badge variant="success">Active</Badge>
                                 </div>
@@ -337,12 +337,12 @@ const Dashboard = ({ setActiveTab }) => {
             >
                 <div className="space-y-6 py-4">
                     {reportResult ? (
-                        <div className="p-6 bg-slate-900 rounded-xl border border-slate-800 max-h-[50vh] overflow-y-auto">
-                            <pre className="whitespace-pre-wrap text-sm text-slate-300 font-mono leading-relaxed">{reportResult}</pre>
+                        <div className="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 max-h-[50vh] overflow-y-auto">
+                            <pre className="whitespace-pre-wrap text-sm text-slate-600 dark:text-slate-300 font-mono leading-relaxed">{reportResult}</pre>
                         </div>
                     ) : (
                         <>
-                            <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-800">
+                            <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-100 dark:bg-slate-800">
                                 <div className="p-3 rounded-xl bg-ai-primary/10 text-ai-primary">
                                     <FileCheck size={24} />
                                 </div>

@@ -23,7 +23,7 @@ const ThoughtStream = () => {
     }, []);
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-[40] bg-slate-900/10 dark:bg-white/5 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-1.5 px-6 overflow-hidden">
+        <div className="fixed bottom-0 left-0 right-0 z-[40] bg-white dark:bg-slate-900/10 dark:bg-white/5 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-1.5 px-6 overflow-hidden">
             <div className="container mx-auto flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2 shrink-0">
                     <Activity size={14} className="text-ai-primary animate-pulse" />

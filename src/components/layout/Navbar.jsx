@@ -15,18 +15,48 @@ const Navbar = ({ activeTab, setActiveTab }) => {
         { name: 'Insights', icon: <BarChart2 size={18} /> },
     ];
 
+    if (activeTab === 'Home') {
+        return (
+            <nav className="absolute top-0 left-0 w-full z-50 px-8 py-6 flex items-center justify-between bg-transparent">
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={() => setActiveTab('Home')}
+                        className="flex items-center gap-3 hover:opacity-80 transition-all group focus:outline-none"
+                    >
+                        <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-ai-primary/30 group-hover:scale-110 transition-transform bg-gradient-to-br from-indigo-600 via-ai-primary to-ai-secondary flex items-center justify-center p-0.5">
+                            <div className="w-full h-full bg-white dark:bg-slate-900 rounded-lg flex items-center justify-center">
+                               <span className="font-black text-lg tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-ai-primary to-ai-secondary">AI</span>
+                            </div>
+                        </div>
+                        <span className="font-bold text-xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-slate-900 dark:from-white to-slate-500 dark:to-slate-400">
+                            STOCKFOLIO
+                        </span>
+                    </button>
+                </div>
+                <button
+                    onClick={toggleTheme}
+                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors border border-white/20"
+                >
+                    {isDarkMode ? <Sun size={18} className="text-white" /> : <Moon size={18} className="text-slate-900" />}
+                </button>
+            </nav>
+        );
+    }
+
     return (
-        <nav className="sticky top-0 z-50 glass-card mx-4 mt-4 px-6 py-3 flex items-center justify-between border-none rounded-2xl bg-slate-900/80 backdrop-blur-md">
+        <nav className="sticky top-0 z-50 glass-card mx-4 mt-4 px-6 py-3 flex items-center justify-between border-none rounded-2xl bg-white dark:bg-slate-900/80 backdrop-blur-md">
             <div className="flex items-center gap-2">
                 <button
-                    onClick={() => setActiveTab('Dashboard')}
-                    className="flex items-center gap-3 hover:opacity-80 transition-all group"
+                    onClick={() => setActiveTab('Home')}
+                    className="flex items-center gap-3 hover:opacity-80 transition-all group focus:outline-none"
                 >
-                    <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-ai-primary/20 group-hover:scale-110 transition-transform">
-                        <img src="/src/assets/logo.png" alt="Logo" className="w-full h-full object-cover" />
+                    <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-ai-primary/30 group-hover:scale-110 transition-transform bg-gradient-to-br from-indigo-600 via-ai-primary to-ai-secondary flex items-center justify-center p-0.5">
+                        <div className="w-full h-full bg-white dark:bg-slate-900 rounded-lg flex items-center justify-center">
+                           <span className="font-black text-lg tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-ai-primary to-ai-secondary">AI</span>
+                        </div>
                     </div>
-                    <span className="font-bold text-xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
-                        AI STOCKFOLIO
+                    <span className="font-bold text-xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-slate-900 dark:from-white to-slate-500 dark:to-slate-400">
+                        STOCKFOLIO
                     </span>
                 </button>
             </div>
@@ -54,15 +84,23 @@ const Navbar = ({ activeTab, setActiveTab }) => {
             </div>
 
             <div className="relative flex items-center gap-4">
-                <button
-                    onClick={() => setShowProfile(!showProfile)}
-                    className="flex items-center gap-2 pl-4 border-l border-slate-800 hover:opacity-80 transition-opacity focus:outline-none"
-                >
-                    <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-ai-primary">
-                        <User size={18} />
-                    </div>
-                    <span className="hidden sm:inline text-sm font-medium">Dr. Investor</span>
-                </button>
+                <div className="flex items-center gap-4">
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 rounded-full bg-slate-100 dark:bg-slate-800/50 hover:bg-slate-200 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 hover:text-white transition-colors dark:text-slate-400 dark:hover:text-white"
+                    >
+                        {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+                    </button>
+                    <button
+                        onClick={() => setShowProfile(!showProfile)}
+                        className="flex items-center gap-2 bg-white dark:bg-slate-900 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 hover:opacity-80 transition-opacity focus:outline-none"
+                    >
+                        <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                            <User size={16} className="text-ai-primary" />
+                        </div>
+                        <span className="hidden sm:inline text-sm font-medium mr-2">Dr. Investor</span>
+                    </button>
+                </div>
 
                 <AnimatePresence>
                     {showProfile && (
@@ -77,14 +115,14 @@ const Navbar = ({ activeTab, setActiveTab }) => {
                                 animate={{ opacity: 1, y: 0, scale: 1 }}
                                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                 transition={{ duration: 0.2 }}
-                                className="absolute top-14 right-0 w-72 glass-card bg-slate-900/95 border border-slate-800 rounded-2xl p-4 shadow-2xl origin-top-right z-50"
+                                className="absolute top-14 right-0 w-72 glass-card bg-white dark:bg-slate-900/95 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 shadow-2xl origin-top-right z-50"
                             >
-                                <div className="flex items-center gap-3 mb-4 pb-4 border-b border-slate-800">
+                                <div className="flex items-center gap-3 mb-4 pb-4 border-b border-slate-200 dark:border-slate-800">
                                     <div className="w-12 h-12 rounded-full bg-gradient-to-br from-ai-primary to-ai-secondary flex items-center justify-center text-white text-lg font-bold shadow-lg shadow-ai-primary/20">
                                         DR
                                     </div>
                                     <div>
-                                        <h3 className="text-sm font-bold text-slate-200">Dr. Investor</h3>
+                                        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200">Dr. Investor</h3>
                                         <div className="flex items-center gap-1 mt-0.5">
                                             <Badge variant="ai">Elite Tier</Badge>
                                         </div>
@@ -97,7 +135,7 @@ const Navbar = ({ activeTab, setActiveTab }) => {
                                         { icon: <ShieldCheck size={14} />, label: 'Security' },
                                         { icon: <Globe size={14} />, label: 'Region & Network' },
                                     ].map(item => (
-                                        <button key={item.label} className="flex items-center gap-3 px-3 py-2 text-xs font-medium text-slate-400 hover:text-ai-primary hover:bg-slate-800/50 rounded-lg transition-colors w-full text-left">
+                                        <button key={item.label} className="flex items-center gap-3 px-3 py-2 text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-ai-primary hover:bg-slate-100 dark:bg-slate-800/50 rounded-lg transition-colors w-full text-left">
                                             {item.icon}
                                             {item.label}
                                         </button>

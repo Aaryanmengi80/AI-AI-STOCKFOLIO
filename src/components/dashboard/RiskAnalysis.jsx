@@ -2,8 +2,10 @@ import React from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ComposedChart, Bar } from 'recharts';
 import { Card, Badge } from '../ui/Base';
 import { ShieldCheck, TrendingDown, Info } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 
 const RiskAnalysis = ({ data = [] }) => {
+    const { isDarkMode } = useTheme();
     return (
         <Card className="min-h-[500px] flex flex-col">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -20,11 +22,11 @@ const RiskAnalysis = ({ data = [] }) => {
                         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">Actual Equity</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 border-2 border-ai-secondary rounded bg-slate-900" />
+                        <div className="w-3 h-3 border-2 border-ai-secondary rounded bg-white dark:bg-slate-900" />
                         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">AI Projection</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded bg-slate-700" />
+                        <div className="w-3 h-3 rounded bg-slate-200 dark:bg-slate-700" />
                         <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">Market Volume</span>
                     </div>
                 </div>
@@ -39,33 +41,33 @@ const RiskAnalysis = ({ data = [] }) => {
                                 <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                             </linearGradient>
                         </defs>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f080" />
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={isDarkMode ? "#e2e8f010" : "#e2e8f0"} />
                         <XAxis
                             dataKey="name"
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fontSize: 10, fill: '#94a3b8', fontWeight: 600 }}
+                            tick={{ fontSize: 10, fill: isDarkMode ? '#94a3b8' : '#64748b', fontWeight: 600 }}
                         />
                         <YAxis
                             axisLine={false}
                             tickLine={false}
-                            tick={{ fontSize: 10, fill: '#94a3b8' }}
+                            tick={{ fontSize: 10, fill: isDarkMode ? '#94a3b8' : '#64748b' }}
                             tickFormatter={(value) => `$${value / 1000}M`}
                         />
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                                backgroundColor: isDarkMode ? 'rgba(15, 23, 42, 0.95)' : 'rgba(255, 255, 255, 0.95)',
                                 borderRadius: '16px',
-                                border: '1px solid rgba(51, 65, 85, 0.5)',
-                                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)'
+                                border: isDarkMode ? '1px solid rgba(51, 65, 85, 0.5)' : '1px solid rgba(203, 213, 225, 0.8)',
+                                boxShadow: isDarkMode ? '0 20px 25px -5px rgba(0, 0, 0, 0.5)' : '0 20px 25px -5px rgba(0, 0, 0, 0.1)'
                             }}
-                            itemStyle={{ color: '#f8fafc' }}
-                            cursor={{ stroke: '#475569', strokeWidth: 1, strokeDasharray: '4 4' }}
+                            itemStyle={{ color: isDarkMode ? '#f8fafc' : '#1e293b' }}
+                            cursor={{ stroke: isDarkMode ? '#475569' : '#cbd5e1', strokeWidth: 1, strokeDasharray: '4 4' }}
                         />
                         <Bar
                             dataKey="volume"
                             barSize={40}
-                            fill="#1e293b"
+                            fill={isDarkMode ? "#1e293b" : "#cbd5e1"}
                             opacity={0.3}
                             radius={[4, 4, 0, 0]}
                         />
@@ -91,7 +93,7 @@ const RiskAnalysis = ({ data = [] }) => {
 
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-slate-100 dark:border-slate-800 pt-8 pb-2">
                 <div className="space-y-1">
-                    <div className="text-[10px] text-slate-400 uppercase font-bold tracking-widest flex items-center gap-1">
+                    <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-widest flex items-center gap-1">
                         Max Drawdown <Info size={10} />
                     </div>
                     <div className="flex items-center gap-2">
@@ -100,7 +102,7 @@ const RiskAnalysis = ({ data = [] }) => {
                     </div>
                 </div>
                 <div className="space-y-1 md:border-l md:pl-6 dark:border-slate-800">
-                    <div className="text-[10px] text-slate-400 uppercase font-bold tracking-widest flex items-center gap-1">
+                    <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-widest flex items-center gap-1">
                         Sharpe Ratio <Info size={10} />
                     </div>
                     <div className="flex items-center gap-2">
@@ -109,11 +111,11 @@ const RiskAnalysis = ({ data = [] }) => {
                     </div>
                 </div>
                 <div className="space-y-1 md:border-l md:pl-6 dark:border-slate-800">
-                    <div className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Volatility</div>
+                    <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-widest">Volatility</div>
                     <div className="text-2xl font-bold text-amber-500">12.2%</div>
                 </div>
                 <div className="space-y-1 md:border-l md:pl-6 dark:border-slate-800">
-                    <div className="text-[10px] text-slate-400 uppercase font-bold tracking-widest">Alpha Gen</div>
+                    <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-bold tracking-widest">Alpha Gen</div>
                     <div className="text-2xl font-bold text-ai-primary">4.82%</div>
                 </div>
             </div>

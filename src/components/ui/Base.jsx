@@ -35,12 +35,12 @@ export const FlashCard = ({ title, content, icon: Icon, color = 'blue', badge })
 
             <div>
                 <div className="flex justify-between items-start mb-2">
-                    <div className="p-2 rounded-lg bg-slate-800/50 shadow-sm">
+                    <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800/50 shadow-sm">
                         <Icon size={20} />
                     </div>
                     {badge && <Badge variant="ai">{badge}</Badge>}
                 </div>
-                <h4 className="font-bold text-white group-hover:text-ai-primary transition-colors">{title}</h4>
+                <h4 className="font-bold text-slate-800 dark:text-white group-hover:text-ai-primary transition-colors">{title}</h4>
             </div>
 
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
@@ -56,11 +56,11 @@ export const FlashCard = ({ title, content, icon: Icon, color = 'blue', badge })
 
 export const Badge = ({ children, variant = 'info' }) => {
     const variants = {
-        info: 'bg-blue-900/30 text-blue-400',
-        success: 'bg-emerald-900/30 text-emerald-400',
-        warning: 'bg-amber-900/30 text-amber-400',
-        danger: 'bg-rose-900/30 text-rose-400',
-        ai: 'bg-violet-900/40 text-violet-300 border border-violet-500/30',
+        info: 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400',
+        success: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400',
+        warning: 'bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400',
+        danger: 'bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400',
+        ai: 'bg-violet-100 dark:bg-violet-900/40 text-violet-600 dark:text-violet-300 border border-violet-200 dark:border-violet-500/30',
     };
 
     return (
@@ -98,18 +98,18 @@ export const Modal = ({ isOpen, onClose, title, children }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-white dark:bg-slate-900/60 backdrop-blur-sm">
             <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                className="glass-card w-full max-w-lg p-8 relative overflow-hidden bg-slate-900 border border-slate-800 shadow-2xl"
+                className="glass-card w-full max-w-lg p-8 relative overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl"
             >
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-ai-primary to-ai-secondary" />
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
                     <button
                         onClick={onClose}
-                        className="p-2 hover:bg-slate-800 rounded-full transition-colors"
+                        className="p-2 hover:bg-slate-100 dark:bg-slate-800 rounded-full transition-colors"
                     >
                         <div className="w-6 h-6 flex items-center justify-center text-slate-500 font-bold">✕</div>
                     </button>
@@ -133,7 +133,7 @@ export const Toast = ({ message, type = 'success', onClose }) => {
             initial={{ opacity: 0, y: 50, x: '-50%' }}
             animate={{ opacity: 1, y: 0, x: '-50%' }}
             exit={{ opacity: 0, y: 50, x: '-50%' }}
-            className="fixed bottom-10 left-1/2 z-[200] max-w-sm px-6 py-4 rounded-2xl shadow-2xl bg-slate-900/90 backdrop-blur-md text-white flex items-center gap-4 font-bold border border-white/10"
+            className="fixed bottom-10 left-1/2 z-[200] max-w-sm px-6 py-4 rounded-2xl shadow-2xl bg-white dark:bg-slate-900/90 backdrop-blur-md text-slate-800 dark:text-white flex items-center gap-4 font-bold border border-slate-200 dark:border-white/10"
         >
             <div className={`w-3 h-3 rounded-full animate-pulse ${type === 'success' ? 'bg-emerald-500' : 'bg-ai-primary shadow-[0_0_10px_rgba(59,130,246,0.5)]'}`} />
             <span className="text-sm tracking-tight">{message}</span>
@@ -142,5 +142,5 @@ export const Toast = ({ message, type = 'success', onClose }) => {
 };
 
 export const Skeleton = ({ className = "" }) => (
-    <div className={`animate-pulse bg-slate-800/50 rounded-xl ${className}`} />
+    <div className={`animate-pulse bg-slate-100 dark:bg-slate-800/50 rounded-xl ${className}`} />
 );
