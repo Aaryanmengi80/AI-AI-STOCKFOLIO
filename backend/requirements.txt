@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+google-generativeai
+python-dotenv
+pydantic
+pydantic-settings
+httpx
+cachetools
+slowapi
+structlog
+pandas
+numpy
+pytest
+pytest-asyncio
+python-multipart

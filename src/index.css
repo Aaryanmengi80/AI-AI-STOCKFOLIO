@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ai-primary: #3b82f6;
+  --color-ai-secondary: #8b5cf6;
+  --color-ai-accent: #06b6d4;
+  --color-ai-dark: #020617;
+  --color-ai-light: #f8fafc;
+
+  --font-sans: "Inter", "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+
+  @keyframes glow {
+    0% {
+      box-shadow: 0 0 5px rgba(59, 130, 246, 0.4);
+    }
+
+    100% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.7);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply antialiased text-slate-100 bg-ai-dark transition-colors duration-300;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-slate-900 border border-slate-800 shadow-xl rounded-2xl transition-all duration-300;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .ai-glow {
+    position: relative;
+  }
+
+  .ai-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, var(--color-ai-primary), var(--color-ai-secondary));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    filter: blur(15px);
+  }
+
+  .ai-glow:hover::after {
+    opacity: 0.3;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 bg-ai-primary text-white rounded-full font-semibold transition-all shadow-lg;
+    background: linear-gradient(135deg, var(--color-ai-primary), var(--color-ai-secondary));
+  }
+
+  .btn-primary:hover {
+    @apply scale-105;
+    box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.5);
+  }
+
+  .btn-primary:active {
+    @apply scale-95;
+  }
+
+  .btn-outline {
+    @apply px-6 py-2 border-2 border-ai-primary/30 text-ai-primary rounded-full font-semibold transition-all backdrop-blur-sm;
+  }
+
+  .btn-outline:hover {
+    @apply bg-ai-primary/5 border-ai-primary/60 scale-105;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(51, 65, 85, 0.7);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.4);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(51, 65, 85, 0.7);
+}
